@@ -16,6 +16,7 @@ public class GameTimer implements ActionListener {
 
 	public GameTimer(JLabel statusbar) {
 		this.statusbar = statusbar;
+		statusbar.setText(seconds + " s");
 	}
 
 	public void start() {

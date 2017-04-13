@@ -48,12 +48,11 @@ public class Board extends JPanel {
 	
 	private GameTimer timer;
 
-	public Board(JLabel statusbar) {
-		// cia isideti timeri ir virsuj nurodyti du parametrus
-		this.timer = new GameTimer(statusbar);
+	public Board(JLabel statusbar, JLabel timerbar, JLabel timer) {
+		this.timer = new GameTimer(timerbar);
 		
 		this.statusbar = statusbar;
-
+		
 		img = new Image[NUM_IMAGES];
 
 		for (int i = 0; i < NUM_IMAGES; i++) {
@@ -64,33 +63,21 @@ public class Board extends JPanel {
 		setDoubleBuffered(true);
 
 		addMouseListener(new MinesAdapter());
-		addKeyListener(new KeyListener() {
-			
-			@Override
-			public void keyTyped(KeyEvent e) {
-					System.out.println("key typed");
-			}
-			
-			@Override
-			public void keyReleased(KeyEvent e) {
-				System.out.println("key event released");
-			}
-			
-			@Override
-			public void keyPressed(KeyEvent e) {
-				System.out.println("key event pressed");
-			}
-		} );
 		
-		setFocusable(true);
 		
 		newGame();
 		
+	}
+	@Override
+	public void setVisible(boolean aFlag) {
+		super.setVisible(aFlag);
+		if (aFlag){
+			timer.start();
+		} else {
+			timer.stop();
+		}
 		
 	}
-
-	
-	
 	private void newGame() {
 
 		Random random;
