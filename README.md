@@ -1,2 +1,2 @@
 # minesweeper
-Made few improvements for minsweeper game. Added clock, start/pause function
+Game taken from internet. Made few improvements like adding clock, start/pause function
